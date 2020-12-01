@@ -11,16 +11,18 @@ function Followers() {
 
   const params = useParams();
 
-  let name = params.owner;
+  let name = params.owner; // gets owners name from url
 
-  const { userFollowers, isError } = useSelector((state) => state);
+  const { userFollowers, isError } = useSelector((state) => state); // gets followwers list and error from reducer
 
+  // fetches followers of user as soon as the page reloads
   useEffect(() => {
     dispatch(getUserFollowers(name));
   }, [dispatch, name]);
 
   const history = useHistory();
 
+  // fetches name of the user and reedirects to homepage
   const getRepos = (name) => {
     dispatch(getUser(name));
     history.push("/");
@@ -35,6 +37,7 @@ function Followers() {
       <Link to="/">
         <img src={goB} alt="Go Back" />
       </Link>
+      {/* Displays Followers Data */}
       <div className={styles.followersDisplay}>
         {userFollowers &&
           userFollowers.map((follower) => (

@@ -20,6 +20,7 @@ function Repo() {
     forks_count,
   } = individualRepo;
 
+  // repo url link
   const takeToRepo = () => {
     window.location.href = html_url;
   };
